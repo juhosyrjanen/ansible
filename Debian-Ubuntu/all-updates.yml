@@ -1,0 +1,34 @@
+ ---
+- hosts: '*'
+  become: yes
+  
+  tasks:
+  - name: update apt-cache
+    apt: 
+      update_cache: yes 
+      cache_valid_time: 3600
+
+  - name: Upgrade all packages and kernel
+    apt: 
+      upgrade: dist
+      register: apt_result
+
+  - name: reboot to apply latest kernel
+    shell: "sleep 5 && reboot"
+    async: 1
+    poll: 0
+
+- name: wait for 10 seconds
+    pause:
+      seconds: 10
+
+- name: wait for boot cycle to complete and reconnect
+    wait_for_connection:
+      connect_timeout: 20
+      sleep: 5
+      delay: 5
+      timeout: 60
+
+- name: confirm boot
+      debug:
+        msg: "The system rebooted in {{ reboot_result.elapsed }} seconds."
