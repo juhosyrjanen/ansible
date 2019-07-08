@@ -29,5 +29,5 @@
       timeout: 60
 
   - name: confirm boot
-      debug:
-        msg: "The system rebooted in {{ reboot_result.elapsed }} seconds."
+    debug:
+      msg: "The system rebooted in {{ reboot_result.elapsed }} seconds."
