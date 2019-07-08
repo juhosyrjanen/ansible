@@ -10,8 +10,7 @@
   - name: Upgrade all packages and kernel
     apt: 
       upgrade: dist
-      register: apt_result
-
+      
   - name: reboot to apply latest kernel
     shell: "sleep 5 && reboot"
     async: 1
