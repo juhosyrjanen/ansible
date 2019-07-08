@@ -18,17 +18,17 @@
     async: 1
     poll: 0
 
-- name: wait for 10 seconds
+ - name: wait for 10 seconds
     pause:
       seconds: 10
 
-- name: wait for boot cycle to complete and reconnect
+  - name: wait for boot cycle to complete and reconnect
     wait_for_connection:
       connect_timeout: 20
       sleep: 5
       delay: 5
       timeout: 60
 
-- name: confirm boot
+  - name: confirm boot
       debug:
         msg: "The system rebooted in {{ reboot_result.elapsed }} seconds."
