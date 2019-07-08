@@ -10,7 +10,7 @@
   - name: Upgrade all packages and kernel
     apt: 
       upgrade: dist
-      
+
   - name: reboot to apply latest kernel
     shell: "sleep 5 && reboot"
     async: 1
@@ -26,7 +26,3 @@
       sleep: 5
       delay: 5
       timeout: 60
-
-  - name: confirm boot
-    debug:
-      msg: "The system rebooted in {{ reboot_result.elapsed }} seconds."
