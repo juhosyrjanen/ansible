@@ -1,5 +1,4 @@
- ---
-- hosts: 5.250.163.187
+- hosts: all
   become: yes
   
   tasks:
@@ -18,7 +17,7 @@
     async: 1
     poll: 0
 
- - name: wait for 10 seconds
+  - name: wait for 10 seconds
     pause:
       seconds: 10
 
