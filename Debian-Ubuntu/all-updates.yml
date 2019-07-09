@@ -5,7 +5,7 @@
   - name: ensure aptitude is installed
     become: yes
     become_user: root
-    become_method: su
+    become_method: sudo
     package:
       name: aptitude
       state: present
