@@ -3,11 +3,17 @@ become: yes
 tasks:
 
 - name: update the system
+    become: yes
+    become_user: root
+    become_method: sudo
     yum:
       name: "*"
       state: latest
 
 - name: reboot to apply latest kernel
+    become: yes
+    become_user: root
+    become_method: sudo
     shell: "sleep 5 && reboot"
     async: 1
     poll: 0
