@@ -2,21 +2,21 @@
   become: yes
   tasks:
 
-  - name: ensure aptitude is 
+  - name: ensure aptitude is installed
+    become: yes
     package:
-      become: yes
-      name: "aptitude"
+      name: aptitude
       state: present
 
   - name: update apt-cache
+    become: yes
     apt: 
-      become: yes
       update_cache: yes 
       cache_valid_time: 3600
 
   - name: Upgrade all packages and kernel
+    become: yes
     apt: 
-      become: yes
       upgrade: dist
 
   - name: reboot to apply latest kernel
