@@ -3,28 +3,28 @@ become: yes
 tasks:
 
 - name: update the system
-    become: yes
-    become_user: root
-    become_method: sudo
-    yum:
-      name: "*"
-      state: latest
+  become: yes
+  become_user: root
+  become_method: sudo
+  yum:
+    name: "*"
+    state: latest
 
 - name: reboot to apply latest kernel
-    become: yes
-    become_user: root
-    become_method: sudo
-    shell: "sleep 5 && reboot"
-    async: 1
-    poll: 0
+  become: yes
+  become_user: root
+  become_method: sudo
+  shell: "sleep 5 && reboot"
+  async: 1
+  poll: 0
 
 - name: wait for 10 seconds
-    pause:
-      seconds: 10
+  pause:
+    seconds: 10
 
 - name: wait for boot cycle to complete and reconnect
-    wait_for_connection:
-      connect_timeout: 20
-      sleep: 5
-      delay: 5
-      timeout: 60
+  wait_for_connection:
+    connect_timeout: 20
+    sleep: 5
+    delay: 5
+    timeout: 60
