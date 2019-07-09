@@ -2,6 +2,12 @@
   become: yes
   
   tasks:
+
+  - name: ensure aptitude is installed
+    package:
+      name: "aptitude"
+      state: present
+      
   - name: update apt-cache
     apt: 
       update_cache: yes 
