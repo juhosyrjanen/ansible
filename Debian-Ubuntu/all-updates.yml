@@ -1,5 +1,4 @@
 - hosts: all
-  become: yes
   
   tasks:
 
@@ -7,7 +6,7 @@
     package:
       name: "aptitude"
       state: present
-      
+
   - name: update apt-cache
     apt: 
       update_cache: yes 
