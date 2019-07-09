@@ -2,7 +2,8 @@
   become: yes
   tasks:
 
-  - name: ensure aptitude is installed
+  - name: ensure aptitude is 
+    become: yes
     package:
       name: "aptitude"
       state: present
@@ -13,10 +14,12 @@
       cache_valid_time: 3600
 
   - name: Upgrade all packages and kernel
+    become: yes
     apt: 
       upgrade: dist
 
   - name: reboot to apply latest kernel
+    become: yes
     shell: "sleep 5 && reboot"
     async: 1
     poll: 0
