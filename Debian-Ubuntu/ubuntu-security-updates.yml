@@ -1,15 +1,23 @@
----
 - hosts: all
   become: yes
 
   tasks:
   - name: Make a copy of security repos
+    become: yes
+    become_user: root
+    become_method: sudo  
     shell: cat /etc/apt/sources.list|grep secu >/etc/apt/security.sources.list
 
   - name: Update cache
+    become: yes
+    become_user: root
+    become_method: sudo  
     apt: 
       update_cache: yes
       cache_valid_time: 3600
 
   - name: Install security updates
+    become: yes
+    become_user: root
+    become_method: sudo  
     shell: apt-get upgrade -oDir::Etc::SourceList=/etc/apt/security.sources.list --force-yes -y
