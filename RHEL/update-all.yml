@@ -1,0 +1,14 @@
+- hosts: all
+  become: yes
+  tasks:
+
+  - name: update the system
+    become: yes
+    become_user: root
+    become_method: sudo
+    yum:
+      name: "*"
+      state: latest
+
+  - name: Include reboot.yml - reboot the host and reconnect after boot cycle  
+    include: reboot.yml
