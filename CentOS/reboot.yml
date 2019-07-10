@@ -1,0 +1,22 @@
+- hosts: all
+  become: yes
+  tasks:
+
+  - name: reboot to apply latest kernel
+    become: yes
+    become_user: root
+    become_method: sudo
+    shell: "sleep 5 && reboot"
+    async: 1
+    poll: 0
+
+  - name: wait for 10 seconds
+    pause:
+      seconds: 10
+
+  - name: wait for boot cycle to complete and reconnect
+    wait_for_connection:
+      connect_timeout: 20
+      sleep: 5
+      delay: 5
+      timeout: 60
