@@ -1,7 +1,3 @@
-- hosts: all
-  become: yes
-  tasks:
-
   - name: reboot to apply latest kernel
     become: yes
     become_user: root
