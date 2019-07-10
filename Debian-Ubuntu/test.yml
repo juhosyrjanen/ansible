@@ -25,4 +25,4 @@
     apt: 
       upgrade: dist
 
-  - import_tasks: reboot.yml
+  - include_tasks: reboot.yml
