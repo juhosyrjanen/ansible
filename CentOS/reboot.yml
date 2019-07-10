@@ -1,7 +1,3 @@
-- hosts: all
-  become: yes
-  tasks:
-
   - name: reboot to apply latest kernel
     become: yes
     become_user: root
@@ -14,7 +10,7 @@
     pause:
       seconds: 10
 
-  - name: wait for boot cycle to complete and reconnect
+  - name: wait for boot cycle to complete and reconnect the host
     wait_for_connection:
       connect_timeout: 20
       sleep: 5
