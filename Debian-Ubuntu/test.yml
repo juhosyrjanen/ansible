@@ -22,7 +22,8 @@
     become: yes
     become_user: root
     become_method: sudo
-    apt: 
+    apt:
       upgrade: dist
 
-  - include_tasks: reboot.yml
+  - name: Include reboot.yml - reboot the host and reconnect after boot cycle  
+    include: reboot.yml
