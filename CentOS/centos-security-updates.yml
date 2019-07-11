@@ -1,0 +1,11 @@
+- hosts: all
+  tasks:
+
+  - name: install security updates
+    become: yes
+    become_user: root
+    become_method: sudo
+    yum:
+        name: '*'
+        security: yes
+        state: latest
